@@ -1,0 +1,165 @@
+#containerMain {
+    position: relative; /* Permite posicionar elementos dentro */
+    width: 100vw;  /* 100% del ancho de la pantalla */
+    height: 100vh; /* 100% de la altura de la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    background-color: #f3E4cf;
+}
+#containerMain img {
+    width: auto; /* Ajusta el tamaño de la imagen según necesites */
+    height: 100%;
+}
+
+#mainImageCel{
+    display: none;
+}
+
+/* Posicionamiento de los chakras */
+#chakra1, #chakra2, #chakra3, #chakra4,#chakra5,#chakra6,#chakra7{
+    position: absolute;
+    height: 7%; /* Ajusta el tamaño */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+/* Ajustar la posición de cada chakra */
+#chakra1 {
+    top: 26%; 
+}
+
+#chakra1:hover, #chakra2:hover, #chakra3:hover,
+#chakra4:hover,#chakra5:hover,#chakra6:hover,
+#chakra7:hover
+{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+#chakra2 {
+    top: 33%;
+}
+
+#chakra3 {
+    top: 40%;
+}
+
+#chakra4{
+    top: 47%;
+}
+
+#chakra5{
+    top: 55%;
+}
+
+#chakra6{
+    top: 62%;
+}
+
+#chakra7{
+    top: 68%;
+}
+
+#buttonMain {
+    position: absolute;
+    height: 20%;
+    width: 100%;
+    bottom: 10%;
+    
+    background-color: #f3E4cf;
+    opacity: 0;
+}
+
+#buttonMain:hover{
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.alatsi-regular {
+    font-family: "Alatsi", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  #mainImageCelGrande{
+    display: none;
+}
+
+
+/* Para pantallas entre 310px y 420px de ancho */
+@media (min-width: 310px) and (max-width: 420px) {
+    #mainImageCel {
+        display: none;
+    }
+
+    #mainImageCelGrande {
+        display: block; /* Mostrar la imagen grande solo en este rango */
+    }
+
+    #mainImage {
+        display: none;
+    }
+
+    /* Ajustar el botón para que ocupe toda la pantalla */
+    #buttonMain {
+        position: fixed; /* Fija el botón en la pantalla */
+        top: 0;
+        left: 0;
+        width: 100%;   /* Ocupa todo el ancho de la pantalla */
+        height: 100%;  /* Ocupa toda la altura de la pantalla */
+       
+        display: flex;
+        justify-content: center; /* Centra el contenido dentro del botón */
+        align-items: center; /* Centra el contenido verticalmente */
+        border: none;
+        opacity: 0;
+        z-index: 1000; /* Asegura que el botón esté encima de otros elementos */
+    }
+    
+    #buttonMain:hover {
+        opacity: 0.3;
+        cursor: pointer;
+    }
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 0.5rem; 
+    margin-top: 2%;
+    max-width: 90%; 
+    margin-left: 30px; 
+}
+
+.card {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Efecto hover */
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #555;
+}
