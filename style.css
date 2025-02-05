@@ -97,8 +97,7 @@ body{
 
     #mainImageCelGrande {
         display: block;
-        transform: scale(1.5);
-    }
+width: 300%;    }
 
     #mainImage {
         display: none;
@@ -132,8 +131,7 @@ body{
 
     #mainImageCel {
         display: block;
-        transform: scale(2);
-    }
+width: 200%;    }
 
     #mainImageCelGrande {
         display: none;
@@ -166,6 +164,7 @@ body{
 
     #mainImageCel {
         display: block;
+        width: 60%;
     }
 
     #mainImageCelGrande {
