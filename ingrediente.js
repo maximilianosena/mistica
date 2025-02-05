@@ -22,12 +22,54 @@ let lista = [
     "Albahaca",
     "Hojas de Laurel"
 ]
+
+let lista_Jabones = {
+    jabones: [
+      {nombre:"Alegría y Vitalidad",
+        img:"",
+        ingredientes:["Flores de Caléndula", "Cúrcuma en Polvo"]
+      },
+      {nombre:"Revitalización y Equilibrio Energético",
+        img:"",
+        ingredientes:["Orégano", "Canela en Polvo"]
+      },
+      {
+        nombre:"Serenidad y Relajación",
+        img:"",
+        ingredientes:["Avena", "Canela en Polvo", "Flores de Lavanda"]
+      }
+
+    ]}
+
+let orden = lista.sort()
+
+function comparador (buscado, jabon){
+    let visual =[]
+    for (let i = 0; i < jabon.jabones.length; i++) {
+        let jabn = jabon.jabones[i];  
+
+        for (let x = 0; x < buscado.length; x++) {
+            if (jabn.ingredientes.includes(buscado[x])) {
+                visual.push(jabn); 
+                break 
+            }
+        }
+    }
+    console.log(visual)
+
+        let containerResultado = document.getElementById("resultado")
+            containerResultado.innerHTML=""
+        for (let r = 0; r < visual.length; r++) {
+            containerResultado.innerHTML += `<p> ${visual[r].nombre}</p>`
+             }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 
 let container = document.getElementById("checks")
 let buscador = []
 
-for (let x=0; x < lista.length; x++){
+for (let x=0; x < orden.length; x++){
     
     
     let id = lista[x].replace(/ /g, "_");
@@ -57,10 +99,11 @@ for (let x=0; x < lista.length; x++){
             buscador.push(lista[x])
             console.log(buscador)
             localStorage.setItem("buscar", JSON.stringify(buscador))
+            comparador(buscador, lista_Jabones)
         } else {
             buscador = buscador.filter(item => item !== lista[x]);
             localStorage.setItem("buscar", JSON.stringify(buscador))
-
+            comparador(buscador, lista_Jabones)
         }
        
     }
