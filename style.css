@@ -14,6 +14,7 @@ body{
     height: 100%;
 }
 
+
 #mainImageCel{
     display: none;
 }
@@ -89,29 +90,26 @@ body{
     display: none;
 }
 
-
-/* Para pantallas entre 310px y 420px de ancho */
-@media (min-width: 310px) and (max-width: 420px) {
+@media (min-width: 365px) and (max-width: 900px) {
     #mainImageCel {
         display: none;
     }
 
     #mainImageCelGrande {
-        display: block; /* Mostrar la imagen grande solo en este rango */
+        display: block;
+        transform: scale(1.5);
     }
 
     #mainImage {
         display: none;
     }
 
-    /* Ajustar el botón para que ocupe toda la pantalla */
     #buttonMain {
         position: fixed; /* Fija el botón en la pantalla */
         top: 0;
         left: 0;
         width: 100%;   /* Ocupa todo el ancho de la pantalla */
-        height: 100%;  /* Ocupa toda la altura de la pantalla */
-       
+        height: 100%;  /* Ocupa toda la altura de la pantalla */   
         display: flex;
         justify-content: center; /* Centra el contenido dentro del botón */
         align-items: center; /* Centra el contenido verticalmente */
@@ -126,6 +124,73 @@ body{
     }
 }
 
+/* Para pantallas menores o iguales a 361px */
+@media (max-width: 361px) {
+    #mainImage {
+        display: none;
+    }
+
+    #mainImageCel {
+        display: block;
+        transform: scale(2);
+    }
+
+    #mainImageCelGrande {
+        display: none;
+    }
+    #buttonMain {
+        position: fixed; /* Fija el botón en la pantalla */
+        top: 0;
+        left: 0;
+        width: 100%;   /* Ocupa todo el ancho de la pantalla */
+        height: 100%;  /* Ocupa toda la altura de la pantalla */   
+        display: flex;
+        justify-content: center; /* Centra el contenido dentro del botón */
+        align-items: center; /* Centra el contenido verticalmente */
+        border: none;
+        opacity: 0;
+        z-index: 1000; /* Asegura que el botón esté encima de otros elementos */
+    }
+    
+    #buttonMain:hover {
+        opacity: 0.3;
+        cursor: pointer;
+    }
+}
+
+/* Para pantallas menores o iguales a 320px */
+@media (max-width: 320px) {
+    #mainImage {
+        display: none;
+    }
+
+    #mainImageCel {
+        display: block;
+    }
+
+    #mainImageCelGrande {
+        display: none;
+    }
+
+    #buttonMain {
+        position: fixed; /* Fija el botón en la pantalla */
+        top: 0;
+        left: 0;
+        width: 100%;   /* Ocupa todo el ancho de la pantalla */
+        height: 100%;  /* Ocupa toda la altura de la pantalla */   
+        display: flex;
+        justify-content: center; /* Centra el contenido dentro del botón */
+        align-items: center; /* Centra el contenido verticalmente */
+        border: none;
+        opacity: 0;
+        z-index: 1000; /* Asegura que el botón esté encima de otros elementos */
+    }
+    
+    #buttonMain:hover {
+        opacity: 0.3;
+        cursor: pointer;
+    }
+}
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
@@ -163,3 +228,4 @@ body{
     font-size: 1rem;
     color: #555;
 }
+
