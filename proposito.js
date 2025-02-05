@@ -4,7 +4,7 @@ let lista = {
         img: "",
         titulo: "AMOR, ARMONÍA Y CONEXIÓN ESPIRITUAL",
         jabones: ["Amor y Armonía", "Calma y Dulzura Espiritual", "Serenidad y Relajación"],
-        ingredientes: ["Pétalos de Rosa", "Flores de Manzanilla", "Coco Rallado", "Canela"]
+        ingredientes: ["Pétalos de Rosa", "Flores de Manzanilla", "Coco Rallado", "Canela en Polvo"]
       },
       {
         img: "",

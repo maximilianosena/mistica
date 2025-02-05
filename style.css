@@ -15,6 +15,31 @@ html,body{
     overflow-x: hidden;
 }
 
+
+#contenedorCheck {
+    display: flex;
+    flex-direction: row; /* Asegura que los elementos estén en línea */
+    justify-content: space-around; /* Distribuye el espacio entre ellos */
+    gap: 10px; /* Espaciado entre elementos */
+}
+
+.item {
+    flex: 1; /* Hace que los elementos ocupen el mismo espacio */
+    border: 1px solid black; /* Solo para visualizar mejor */
+    border-radius: 10%;
+    padding: 10px;
+    background-color: beige;
+}
+
+.itemGrande {
+    flex: 3; /* Hace que los elementos ocupen el mismo espacio */
+    border: 1px solid black; /* Solo para visualizar mejor */
+    border-radius: 10%;
+    padding: 10px;
+    text-align: center;
+    background-color: azure;
+}
+
 #containerMain img {
     width: auto; /* Ajusta el tamaño de la imagen según necesites */
     height: 100%;
