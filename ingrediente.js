@@ -1,5 +1,5 @@
-let url2 = "http://localhost:3000/ingredientes"
-let url3= "http://localhost:3000/jabones"
+let url2 = "https://mistica-back.vercel.app/ingredientes"
+let url3= "https://mistica-back.vercel.app/jabones"
 let lista_Jabones
 
 fetch(url3)

@@ -1,4 +1,4 @@
-  let url1 = "http://localhost:3000/categorias"
+  let url1 = "https://mistica-back.vercel.app/categorias"
   
 
   function listado(jabon) {
