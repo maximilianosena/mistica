@@ -38,7 +38,6 @@ let lista = {
   
     let container = document.getElementById("cardContainer");
   
-    // Bucle que recorre los 'propositos'
     lista.propositos.forEach((proposito, x) => {
   
       // Crear la card

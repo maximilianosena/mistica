@@ -25,6 +25,38 @@ let lista = [
 
 let lista_Jabones = {
     jabones: [
+        {nombre:"Claridad Espiritual y Conexión Divina",
+            img:"",
+            ingredientes:["Espinaca en Polvo","Hojas de Laurel"]
+          },
+        {nombre:"Fuerza y Conexión Espiritual",
+            img:"",
+            ingredientes:["Açaí en polvo","Albahaca"]
+          },
+        {nombre:"Protección Psíquica",
+            img:"",
+            ingredientes:["Sal gruesa","Romero","Jengibre en Polvo"]
+          },
+        {nombre:"Escudo Energético",
+            img:"",
+            ingredientes:["Hojas de Salvia","Hojas de Ruda","Clavo de olor en polvo"]
+          },
+        {nombre:"Energía y Renovación",
+            img:"",
+            ingredientes:["Espirulina en Polvo", "Jengibre en Polvo"]
+          },
+        {nombre:"Frescura y Claridad Mental",
+            img:"",
+            ingredientes:["Hojas de Menta", "Espinaca en Polvo"]
+          },
+        {nombre:"Calma y Dulzura Espiritual",
+            img:"",
+            ingredientes:["Flores de Manzanilla",  "Coco Rallado"]
+          },
+        {nombre:"Amor y Armonía",
+            img:"",
+            ingredientes:["Pétalos de Rosa", "Remolacha en Polvo"]
+          },
       {nombre:"Alegría y Vitalidad",
         img:"",
         ingredientes:["Flores de Caléndula", "Cúrcuma en Polvo"]
@@ -58,9 +90,27 @@ function comparador (buscado, jabon){
     console.log(visual)
 
         let containerResultado = document.getElementById("resultado")
-            containerResultado.innerHTML=""
+        
+        containerResultado.innerHTML=""
+        if (visual.length===0){
+            containerResultado.innerHTML=`<h2 style="text-align:center" >Seleccione el/los ingredientes a buscar </h2>`
+        }
         for (let r = 0; r < visual.length; r++) {
-            containerResultado.innerHTML += `<p> ${visual[r].nombre}</p>`
+            let cardHTML = `
+                 <div class="card ingrediente" style="width: 18rem;">
+                  <img src="${visual[r].img}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                         <h5 class="card-title">${visual[r].nombre}</h5>
+                        <p class="card-text">${visual[r].ingredientes.map(ingrediente => ingrediente).join(', ')}</p>
+                     </div>
+                 </div>
+                 <br>
+                        `;
+
+        
+            containerResultado.innerHTML += cardHTML
+
+          
              }
 }
 

@@ -25,19 +25,19 @@ html,body{
 
 .item {
     flex: 1; /* Hace que los elementos ocupen el mismo espacio */
-    border: 1px solid black; /* Solo para visualizar mejor */
+    border: 0.5px dashed black; /* Solo para visualizar mejor */
     border-radius: 10%;
     padding: 10px;
-    background-color: beige;
+    background-color: #f3d1a3;
 }
 
 .itemGrande {
     flex: 3; /* Hace que los elementos ocupen el mismo espacio */
-    border: 1px solid black; /* Solo para visualizar mejor */
-    border-radius: 10%;
+    border: 0.5px dashed black; /* Solo para visualizar mejor */
+    border-radius: 3%;
     padding: 10px;
     text-align: center;
-    background-color: azure;
+    background-color: #f3d1a3;
 }
 
 #containerMain img {
@@ -132,17 +132,22 @@ html,body{
 }
 
 .card {
-    background-color: #f4f4f4;
+    background-color: #f8c680;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
     padding: 20px;
     text-align: center;
     transition: transform 0.3s ease;
 }
 
-.card:hover {
-    transform: translateY(-10px); /* Efecto hover */
+.ingrediente{
+    cursor: pointer;
 }
+
+.card:hover {
+    filter: opacity(1);
+}
+
 
 .card img {
     max-width: 100%;
@@ -158,6 +163,14 @@ html,body{
 .card p {
     font-size: 1rem;
     color: #555;
+}
+
+.list-group-item{
+    cursor: pointer;
+}
+
+.list-group-item:hover{
+    background-color: #f3E4cf;
 }
 
 @media (min-width: 365px) and (max-width: 1000px) {
