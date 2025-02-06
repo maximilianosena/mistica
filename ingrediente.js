@@ -1,79 +1,14 @@
-let lista = [
-    "Pétalos de Rosa",
-    "Remolacha en Polvo", 
-    "Flores de Manzanilla", 
-    "Coco Rallado", 
-    "Flores de Lavanda",
-    "Avena",
-    "Canela en Polvo",
-    "Flores de Caléndula", 
-    "Cúrcuma en Polvo",
-    "Hojas de Menta",
-    "Espinaca en Polvo",
-    "Espirulina en Polvo",
-    "Jengibre en Polvo",
-    "Orégano",
-    "Hojas de Salvia",
-    "Hojas de Ruda",
-    "Clavo de olor en polvo",
-    "Sal gruesa",
-    "Romero",
-    "Açaí en polvo",
-    "Albahaca",
-    "Hojas de Laurel"
-]
+let url2 = "http://localhost:3000/ingredientes"
+let url3= "http://localhost:3000/jabones"
+let lista_Jabones
 
-let lista_Jabones = {
-    jabones: [
-        {nombre:"Claridad Espiritual y Conexión Divina",
-            img:"",
-            ingredientes:["Espinaca en Polvo","Hojas de Laurel"]
-          },
-        {nombre:"Fuerza y Conexión Espiritual",
-            img:"",
-            ingredientes:["Açaí en polvo","Albahaca"]
-          },
-        {nombre:"Protección Psíquica",
-            img:"",
-            ingredientes:["Sal gruesa","Romero","Jengibre en Polvo"]
-          },
-        {nombre:"Escudo Energético",
-            img:"",
-            ingredientes:["Hojas de Salvia","Hojas de Ruda","Clavo de olor en polvo"]
-          },
-        {nombre:"Energía y Renovación",
-            img:"",
-            ingredientes:["Espirulina en Polvo", "Jengibre en Polvo"]
-          },
-        {nombre:"Frescura y Claridad Mental",
-            img:"",
-            ingredientes:["Hojas de Menta", "Espinaca en Polvo"]
-          },
-        {nombre:"Calma y Dulzura Espiritual",
-            img:"",
-            ingredientes:["Flores de Manzanilla",  "Coco Rallado"]
-          },
-        {nombre:"Amor y Armonía",
-            img:"",
-            ingredientes:["Pétalos de Rosa", "Remolacha en Polvo"]
-          },
-      {nombre:"Alegría y Vitalidad",
-        img:"",
-        ingredientes:["Flores de Caléndula", "Cúrcuma en Polvo"]
-      },
-      {nombre:"Revitalización y Equilibrio Energético",
-        img:"",
-        ingredientes:["Orégano", "Canela en Polvo"]
-      },
-      {
-        nombre:"Serenidad y Relajación",
-        img:"",
-        ingredientes:["Avena", "Canela en Polvo", "Flores de Lavanda"]
-      }
+fetch(url3)
+  .then(response => response.json())
+  .then(data =>{
+    lista_Jabones=data
+  } )
 
-    ]}
-
-let orden = lista.sort()
+    
 
 function comparador (buscado, jabon){
     let visual =[]
@@ -119,47 +54,43 @@ document.addEventListener('DOMContentLoaded', function () {
 let container = document.getElementById("checks")
 let buscador = []
 
-for (let x=0; x < orden.length; x++){
-    
-    
-    let id = lista[x].replace(/ /g, "_");
+fetch(url2)
+  .then(response => response.json())
+  .then(data => {
+    data.sort(); // Ordenar los datos
 
-        // Crear el input checkbox y el texto
-        let checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.name = lista[x];
-        checkbox.id = id;
+    for (let x = 0; x < data.length; x++) {
+      let id = data[x].replace(/ /g, "_"); // Convertir espacios en guiones bajos
 
-        let label = document.createElement('label');
-        label.setAttribute('for', id);
-        label.innerHTML = lista[x];
+      // Crear el input checkbox y el texto
+      let checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.name = data[x];
+      checkbox.id = id;
 
-        // Crear un salto de línea
-        let br = document.createElement('br');
+      let label = document.createElement("label");
+      label.setAttribute("for", id);
+      label.innerHTML = data[x];
 
-        // Agregar los elementos al contenedor
-        container.appendChild(checkbox);
-        container.appendChild(label);
-        container.appendChild(br);
+      let br = document.createElement("br");
 
-    
-    document.getElementById(id).addEventListener("change", (e)=>{
+      // Agregar los elementos al contenedor
+      container.appendChild(checkbox);
+      container.appendChild(label);
+      container.appendChild(br);
 
-        if(e.target.checked){
-            buscador.push(lista[x])
-            console.log(buscador)
-            localStorage.setItem("buscar", JSON.stringify(buscador))
-            comparador(buscador, lista_Jabones)
+      // Agregar evento al checkbox
+      checkbox.addEventListener("change", (e) => {
+        if (e.target.checked) {
+          buscador.push(data[x]);
         } else {
-            buscador = buscador.filter(item => item !== lista[x]);
-            localStorage.setItem("buscar", JSON.stringify(buscador))
-            comparador(buscador, lista_Jabones)
+          buscador = buscador.filter((item) => item !== data[x]);
         }
-       
+
+        localStorage.setItem("buscar", JSON.stringify(buscador));
+        comparador(buscador, lista_Jabones);
+      });
     }
-        )
-}
-
-
-
+  })
+  .catch(error => console.error("Error en la petición:", error));
 })

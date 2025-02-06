@@ -1,32 +1,6 @@
-let lista = {
-    propositos: [
-      {
-        img: "",
-        titulo: "AMOR, ARMONÍA Y CONEXIÓN ESPIRITUAL",
-        jabones: ["Amor y Armonía", "Calma y Dulzura Espiritual", "Serenidad y Relajación"],
-        ingredientes: ["Pétalos de Rosa", "Flores de Manzanilla", "Coco Rallado", "Canela en Polvo"]
-      },
-      {
-        img: "",
-        titulo: "ENERGÍA, VITALIDAD Y RENOVACIÓN",
-        jabones: ["Alegría y Vitalidad", "Frescura y Claridad Mental", "Energía y Renovación", "Revitalización y Equilibrio Energético"],
-        ingredientes: ["Hojas de Menta", "Flores de Caléndula", "Orégano", "Espirulina en Polvo"]
-      },
-      {
-        img: "",
-        titulo: "PROTECCIÓN, EQUILIBRIO Y DEFENSA ENERGÉTICA",
-        jabones: ["Escudo Energético", "Protección Psíquica"],
-        ingredientes: ["Hojas de Savia", "Romero", "Hojas de Ruda", "Jengibre en Polvo"]
-      },
-      {
-        img: "",
-        titulo: "CONEXIÓN ESPIRITUAL Y FUERZA INTERIOR",
-        jabones: ["Fuerza y Conexión Espiritual", "Claridad Espiritual y Conexión Divina"],
-        ingredientes: ["Albahaca", "Hojas de Laurel", "Espinaca en Polvo"]
-      }
-    ]
-  };
+  let url1 = "http://localhost:3000/categorias"
   
+
   function listado(jabon) {
     let lista = document.createElement("li");
     lista.classList.add("list-group-item");
@@ -37,8 +11,11 @@ let lista = {
   document.addEventListener('DOMContentLoaded', function () {
   
     let container = document.getElementById("cardContainer");
-  
-    lista.propositos.forEach((proposito, x) => {
+    
+    fetch(url1)
+  .then(response => response.json())
+  .then(data => 
+    data.propositos.forEach((proposito, x) => {
   
       // Crear la card
       let cardHTML = `
@@ -71,6 +48,6 @@ let lista = {
 
         contenedorJabones.appendChild(listadoJabon);
       });
-    });
+    }));;
   });
   
