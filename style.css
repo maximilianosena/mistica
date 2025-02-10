@@ -96,6 +96,82 @@ html,body{
     top: 68%;
 }
 
+
+#wpp {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    height: 50%; 
+    
+  }
+  
+  .contact-form, #whatsappForm {
+    background: #f8c680;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-form h2 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #fae0bb;;
+    border: 1px solid #fae0bb;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .contact-form button {
+    background: green;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .carrito {
+    display: flex;
+    margin-left: auto;
+  }
+  
+  .contact-form button:hover {
+    background: #0056b3;
+  }
+
+  #totalCart {
+    color: #0E3B5A;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  #responseMessage {
+    margin-top: 10px;
+    color: green;
+    font-weight: bold;
+
+    }
+    
 #buttonMain {
     position: absolute;
     height: 20%;
