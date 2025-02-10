@@ -111,6 +111,11 @@ html,body{
     cursor: pointer;
 }
 
+a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
 .alatsi-regular {
     font-family: "Alatsi", serif;
     font-weight: 400;
@@ -175,22 +180,46 @@ html,body{
 
 
 #test-container {
+    background-color: #f8c680;
+    border-radius: 8px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
     max-width: 400px;
     margin: auto;
-    text-align: center;
-    padding: 20px;
+    margin-top: 5px;
     border: 1px solid #ccc;
-    border-radius: 5px;
 }
+
+
+
+.pregunta{
+padding: 5%;
+background-color: #f79a19;
+border-radius: 10px;
+}
+
+.test-btn{
+    background-color: #f3E4cf;
+    border-radius: 8px;
+    margin: 8px;
+    width: 100%;
+
+}
+
+
+.test-btn:hover{
+opacity: 0.5;
+}
+
 
 #test-container .card.ingrediente{
     margin: auto;
 }
 
 #next-btn {
-    margin-top: 10px;
-    padding: 10px;
-    cursor: pointer;
+    display: none;
 }
 
 @media (min-width: 365px) and (max-width: 1000px) {

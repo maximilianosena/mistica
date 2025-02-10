@@ -103,10 +103,11 @@ function loadQuestion() {
     }
 
     const questionData = questions[currentQuestionIndex];
-    questionContainer.innerHTML = `<h3>${questionData.question}</h3>`;
+    questionContainer.innerHTML = `<h3 class="pregunta">${questionData.question}</h3>`;
 
     questionData.options.forEach(option => {
         const button = document.createElement("button");
+        button.classList.add("test-btn")
         button.textContent = option.text;
         button.onclick = () => {
             answers.push(option.value);
@@ -124,15 +125,15 @@ function showResult() {
     const result = calculateResult();
     resultContainer.innerHTML = `<h2>Tu resultado es:</h2>
     <br>
+    <a href="jabon.html" style="text-align: center; display: flex; justify-content: center;" onclick=${localStorage.setItem("id", result.id)}>
     <div class="card ingrediente" style="width: 18rem;">
-                  <a href="index.html" style="text-align: center; display: flex; justify-content: center;"> <img src="${result.img}" class="card-img-top" alt="..."> </a>
+                   <img src="${result.img}" class="card-img-top" alt="..."> 
                     <div class="card-body">
                          <h5 class="card-title">${result.nombre}</h5>
                      </div>
                  </div>
+                 </a>
                  <br>
-    <p>${result.id}</p>
-        <a href="index.html" style="text-align: center; display: flex; justify-content: center;"> <img src="imgs/logo.jpg" alt="" style="height: 80px; width: 80px;"></a>
     `;
     resultContainer.style.display = "block";
 }

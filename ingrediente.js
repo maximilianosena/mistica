@@ -32,13 +32,15 @@ function comparador (buscado, jabon){
         }
         for (let r = 0; r < visual.length; r++) {
             let cardHTML = `
-                 <div class="card ingrediente" style="width: 18rem;">
+                  <a href="jabon.html" style="text-align: center; display: flex; justify-content: center;" onclick=${localStorage.setItem("id", visual[r].id)}> 
+                  <div class="card ingrediente" style="width: 18rem;">
                   <img src="${visual[r].img}" class="card-img-top" alt="...">
                     <div class="card-body">
                          <h5 class="card-title">${visual[r].nombre}</h5>
                         <p class="card-text">${visual[r].ingredientes.map(ingrediente => ingrediente).join(', ')}</p>
                      </div>
                  </div>
+                 </a>
                  <br>
                         `;
 
