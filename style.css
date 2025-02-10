@@ -173,6 +173,26 @@ html,body{
     background-color: #f3E4cf;
 }
 
+
+#test-container {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#test-container .card.ingrediente{
+    margin: auto;
+}
+
+#next-btn {
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
 @media (min-width: 365px) and (max-width: 1000px) {
     #mainImageCel {
         display: none;
