@@ -15,7 +15,7 @@ function addProduct(cart_product) {
                 "id": cart_product.id,
                 "name": cart_product.nombre,
                 "count": 1,
-                "unitCost": 150,
+                "unitCost": 120,
                 "image": cart_product.img
             }
         ]
