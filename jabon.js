@@ -55,7 +55,7 @@ function jsonCart() {
                     </div>
                     `
     
-                    containerBoton.innerHTML += `<button  class="btn btn-warning" id=${info.id}>Me interesa</button>`
+                    containerBoton.innerHTML += `<button class="btn btn-warning mt-0" id=${info.id}>Me interesa</button>`
 
 
   let btn_add = document.getElementById(info.id)
@@ -66,6 +66,10 @@ function jsonCart() {
     productToTheCart()
         .then(() => {
             jsonCart();
+            alertPlaceholder.style.display = "block"
+            appendAlert('Producto agregado al <a href="carrito.html" class="alert-link">carrito</a>', 'warning')
+            setTimeout(function () {
+              alertPlaceholder.style.display = "none" }, 5000)
             btn_add.disabled = false; // Volver a habilitar el botón después de agregar el producto
         })
         .catch((error) => {
@@ -76,6 +80,19 @@ function jsonCart() {
 
   }
 
+  
+  const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+  const appendAlert = (message, type) => {
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+      `<div class="alert alert-${type} alert-dismissible mt-1" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>'
+    ].join('')
+  
+    alertPlaceholder.append(wrapper)
+  }
 
 
   document.addEventListener('DOMContentLoaded', function () {

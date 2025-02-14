@@ -5,10 +5,13 @@ window.onload=()=>{
     (JSON.parse(localStorage.getItem("cart")).length === 0 && localStorage.getItem("personalizado")) ){
         let messageArea = document.getElementById('message');
         let message = document.getElementById('message');
-        let ingredientes = JSON.parse(localStorage.getItem("personalizado"));
+        let jabones = JSON.parse(localStorage.getItem("personalizado"));
         message = `Hola! Quisiera realizar un jabón personalizado con los siguientes ingredientes: \n`;
-        for (let i=0; i < ingredientes.length; i++) {
-                message += `${ingredientes[i]}.\n`;
+        for (let i=0; i < jabones.length; i++) {
+                message += `--${jabones[i].ingrediente1}`
+    + (jabones[i].ingrediente2 ? `, ${jabones[i].ingrediente2}` : '')
+    + (jabones[i].ingrediente3 ? `, ${jabones[i].ingrediente3}` : '')
+    + '.\n';
         }
         message += `\n`
         message += `Espero su confirmación, muchas gracias!`
@@ -39,8 +42,8 @@ window.onload=()=>{
             let messageArea = document.getElementById('message');
             let articulos = JSON.parse(localStorage.getItem("cart"))
             let total = localStorage.getItem("totalPagar")
-            let ingredientes = JSON.parse(localStorage.getItem("personalizado"));
-            
+            let jabones = JSON.parse(localStorage.getItem("personalizado"));
+
             console.log(articulos)
             let message = `Hola!\n`
             message += `Me interesa la adquisición de: \n`
@@ -52,10 +55,14 @@ window.onload=()=>{
             message += `\n`
             message +=`-Por un total de: $${total}.\n`
             message += `\n`
-            message += `También quisiera realizar un jabón personalizado con los siguientes ingredientes: \n`;
-            for (let i = 0; i < ingredientes.length; i++) {
-                    message += `${ingredientes[i]}.\n`;
-            }
+           
+              message += `También quisiera realizar jabón personalizado con los siguientes ingredientes: \n`;
+                 for (let i=0; i < jabones.length; i++) {
+                   message += `--${jabones[i].ingrediente1}`
+                        + (jabones[i].ingrediente2 ? `, ${jabones[i].ingrediente2}` : '')
+                         + (jabones[i].ingrediente3 ? `, ${jabones[i].ingrediente3}` : '')
+                             + '.\n';
+        }
             message += `Espero su confirmación, muchas gracias!`
             messageArea.value= message
             }

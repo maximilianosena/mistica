@@ -3,12 +3,13 @@ let totalElement = document.getElementById("total");
 let list = [];
 
 console.log("lista", list)
-
+let jbPersonalizado = JSON.parse(localStorage.getItem("personalizado"))
 let resultadoSubtotal;
 /////////////////////////////////////////////////////////////
 let cart = JSON.parse(localStorage.getItem("cart"))
 
-console.log(cart)
+console.log(jbPersonalizado)
+jbPersonalizados(jbPersonalizado)
 
 function products_add() {
     list = []
@@ -37,7 +38,10 @@ function products_add() {
       let object = await response.json();
       console.log(object);
       localStorage.setItem("cart", JSON.stringify([object]))
+    
+      console.log(jbPersonalizado)
       showTheProduct(object);
+      
       subTotals(); //agrego función al fetch para ver al cargar la página
     } else {
       console.log("Error: " + response.status);
@@ -111,6 +115,28 @@ function products_add() {
       });
     });
   }
+
+  function jbPersonalizados(array) {
+    for (let i = 0; i < array.length; i++) {
+      let product = array[i];
+  
+      // Generar la lista de ingredientes en una sola línea
+      let ingredientes = `${product.ingrediente1}`
+        + (product.ingrediente2 ? `, ${product.ingrediente2}` : '')
+        + (product.ingrediente3 ? `, ${product.ingrediente3}` : '');
+  
+      tableBody.innerHTML += `
+        <tr data-index="${i}"> 
+          <td><img src="" width="50px"></td>
+          <td>${ingredientes}</td>
+          <td> $120 </td>
+          <td><input class="prodCount" type="number" value=${product.count || 1} min="1" style="width:70px"></td>
+          <td><b>$ <span class="subtotal">${120 * (1) }</span></b></td>
+        </tr>`;
+    }
+  }
+  
+  console.log(localStorage.getItem("personalizado"));
 
   function removeProductCart(id) {
     tableBody.innerHTML = '';
