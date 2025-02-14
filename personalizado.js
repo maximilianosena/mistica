@@ -75,6 +75,19 @@ function comparador(buscado) {
    containerResultado.innerHTML += `<button type="submit" id="agregar" class="btn btn-warning btn-lg btn-block">Agregar nuevo jabón</button>`
   containerResultado.innerHTML += `<button type="submit" id="continuar" class="btn btn-warning btn-lg btn-block">Finalizar selección</button>`;
 
+  const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+  const appendAlert = (message, type) => {
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+      `<div class="alert alert-${type} alert-dismissible mt-1" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>'
+    ].join('')
+  
+    alertPlaceholder.append(wrapper)
+  }
+
   document.getElementById("agregar").addEventListener("click", () => {
     jb_personalizados.push({
       ingrediente1: buscado[0],
@@ -83,6 +96,10 @@ function comparador(buscado) {
     })
     
     localStorage.setItem("personalizado", JSON.stringify(jb_personalizados));
+    alertPlaceholder.style.display = "block"
+    appendAlert('Producto agregado al <a href="carrito.html" class="alert-link">carrito</a>', 'warning')
+    setTimeout(function () {
+      alertPlaceholder.style.display = "none" }, 2500)
     const checkboxes = document.querySelectorAll(".checkbox");
     checkboxes.forEach(cb => {
       cb.disabled = false
@@ -101,7 +118,7 @@ function comparador(buscado) {
     })
     
     localStorage.setItem("personalizado", JSON.stringify(jb_personalizados));
-      location.replace("wpp.html");
+      location.replace("carrito.html");
   });
 }
 

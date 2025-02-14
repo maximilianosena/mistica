@@ -52,19 +52,20 @@ window.onload=()=>{
                     message += `${articulos[i].articles[j].count} unidades de ${articulos[i].articles[j].name}.\n`;
                 }
             }
-            message += `\n`
-            message +=`-Por un total de: $${total}.\n`
-            message += `\n`
            
-              message += `También quisiera realizar jabón personalizado con los siguientes ingredientes: \n`;
+           
+              message += `\nTambién quisiera realizar jabón personalizado con los siguientes ingredientes: \n`;
                  for (let i=0; i < jabones.length; i++) {
                    message += `--${jabones[i].ingrediente1}`
                         + (jabones[i].ingrediente2 ? `, ${jabones[i].ingrediente2}` : '')
                          + (jabones[i].ingrediente3 ? `, ${jabones[i].ingrediente3}` : '')
                              + '.\n';
         }
-            message += `Espero su confirmación, muchas gracias!`
-            messageArea.value= message
+             message += `\n`
+             message +=`-Por un total de: $${total}.\n`
+             message += `\n`
+             message += `Espero su confirmación, muchas gracias!`
+              messageArea.value= message
             }
 }
 

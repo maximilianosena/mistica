@@ -1,6 +1,8 @@
 let tableBody = document.getElementById("tableBody");
+let tableBody2 = document.getElementById("tableBody2");
 let totalElement = document.getElementById("total");
 let list = [];
+let subtotalPersonalizado = 0
 
 console.log("lista", list)
 let jbPersonalizado = JSON.parse(localStorage.getItem("personalizado"))
@@ -9,7 +11,7 @@ let resultadoSubtotal;
 let cart = JSON.parse(localStorage.getItem("cart"))
 
 console.log(jbPersonalizado)
-jbPersonalizados(jbPersonalizado)
+jbPersonalizado===null?console.log("personalizados vacio"):jbPersonalizados(jbPersonalizado)
 
 function products_add() {
     list = []
@@ -119,19 +121,17 @@ function products_add() {
   function jbPersonalizados(array) {
     for (let i = 0; i < array.length; i++) {
       let product = array[i];
-  
+      subtotalPersonalizado += 120
       // Generar la lista de ingredientes en una sola línea
       let ingredientes = `${product.ingrediente1}`
         + (product.ingrediente2 ? `, ${product.ingrediente2}` : '')
         + (product.ingrediente3 ? `, ${product.ingrediente3}` : '');
   
-      tableBody.innerHTML += `
+      tableBody2.innerHTML += `
         <tr data-index="${i}"> 
           <td><img src="" width="50px"></td>
           <td>${ingredientes}</td>
-          <td> $120 </td>
-          <td><input class="prodCount" type="number" value=${product.count || 1} min="1" style="width:70px"></td>
-          <td><b>$ <span class="subtotal">${120 * (1) }</span></b></td>
+          <td><b>$ <span class="subtotal">${120 * 1}</span></b></td>
         </tr>`;
     }
   }
@@ -162,15 +162,15 @@ function products_add() {
   //SUMA TOTAL
 let allSubtotal = document.getElementsByTagName("b")
 console.log(allSubtotal.length)
+console.log(Number.parseFloat(subtotalPersonalizado))
 
-
-//Función que devuelve la suma de los subtotales, y actualiza el valor del costo de envío y costo total
 function subTotals() {
   let resultado = 0;
   if (allSubtotal.length === 0) {
     console.log("vacío")
     totalFinal.textContent = ` $ 0`
-  } else {
+  }
+  else {
     for (let i = 0; i < allSubtotal.length; i++) {
         resultado += parseFloat(allSubtotal[i].childNodes[1].textContent)
       }
@@ -184,10 +184,12 @@ function subTotals() {
 
 let totalFinal = document.getElementById("totalCart")
 
-function final(subtotalCart) {
+function final(subtotalCart, subtotalPersonalizado) {
   let result = 0
-  result += subtotalCart
-  totalFinal.textContent = ` $ ${result.toFixed(2)}`
+  subtotalCart = isNaN(parseFloat(subtotalCart)) ? 0 : parseFloat(subtotalCart);
+  subtotalPersonalizado = isNaN(parseFloat(subtotalPersonalizado)) ? 0 : parseFloat(subtotalPersonalizado);
+  result = subtotalCart + subtotalPersonalizado;
+  totalFinal.textContent = ` $ ${Number.parseFloat(result)}`
   console.log(result)
   localStorage.setItem("totalPagar", result)
 }
@@ -203,11 +205,14 @@ function resetPage() {
 };
 
 
-if (cart === null) {
+if (cart === null && jbPersonalizado===0 ) {
     console.log("Carro vacio")
     tableBody.innerHTML = '';
     totalFinal.textContent = `$ 0`;
-  } else {
+  } else if ( parseFloat(subtotalPersonalizado)!==0 && cart === null){
+    final(0, parseFloat(subtotalPersonalizado))
+  }
+  else {
     products_add()
     subTotals()
   }
@@ -228,7 +233,7 @@ if (cart === null) {
     Array.from(forms).forEach(form => {
       form.addEventListener('submit', event => {
   
-        if (cart && cart.length === 0 || cart == null) {
+        if ((cart && cart.length === 0 || cart == null) && parseFloat(subtotalPersonalizado)===0) {
           alertPlaceholder.style.display = "block"
           appendAlert('Agregue un producto al carrito!', 'danger')
           setTimeout(function () {
