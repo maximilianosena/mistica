@@ -8,7 +8,9 @@ fetch(url3)
     lista_Jabones=data
   } )
 
-    
+  function guardarId(id) {
+    localStorage.setItem("id", id);
+}
 
 function comparador (buscado, jabon){
     let visual =[]
@@ -32,7 +34,7 @@ function comparador (buscado, jabon){
         }
         for (let r = 0; r < visual.length; r++) {
             let cardHTML = `
-                  <a href="jabon.html" style="text-align: center; display: flex; justify-content: center;" onclick=${localStorage.setItem("id", visual[r].id)}> 
+                 <a href="jabon.html" style="text-align: center; display: flex; justify-content: center;" onclick="guardarId('${visual[r].id}')"> 
                   <div class="card ingrediente" style="width: 18rem;">
                   <img src="${visual[r].img}" class="card-img-top" alt="...">
                     <div class="card-body">

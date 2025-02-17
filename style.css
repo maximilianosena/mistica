@@ -212,6 +212,13 @@ a {
     margin-left: 30px; 
 }
 
+.card-container2 {
+    display: grid;
+    gap: 0.5rem; 
+    margin-top: 2%;
+    
+}
+
 .card {
     background-color: #f8c680;
     border-radius: 8px;
