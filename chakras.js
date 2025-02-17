@@ -13,6 +13,7 @@ chakra1.addEventListener("click",()=>{
     localStorage.setItem("imagen", "/imgs/corona.webp")
     localStorage.setItem("nombre_Chakra", JSON.stringify("Chakra Corona (Sahasrara)"))
     localStorage.setItem("frase_Chakra", JSON.stringify("Yo soy"))
+ location.href="categorias.html"
 })
 
 chakra2.addEventListener("click",()=>{
