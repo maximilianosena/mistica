@@ -306,6 +306,16 @@ opacity: 0.5;
 }
 
 @media (min-width: 365px) and (max-width: 1000px) {
+
+.card-container2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 0.5rem; 
+    margin-top: 2%;
+    max-width: 90%; 
+    margin-left: 30px; 
+}
+
     #mainImageCel {
         display: none;
     }
@@ -350,6 +360,16 @@ width: 300%;    }
 
 /* Para pantallas menores o iguales a 361px */
 @media (max-width: 361px) {
+
+.card-container2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 0.5rem; 
+    margin-top: 2%;
+    max-width: 90%; 
+    margin-left: 30px; 
+}
+
     #mainImage {
         display: none;
     }
@@ -393,6 +413,16 @@ width: 200%;    }
 
 /* Para pantallas menores o iguales a 320px */
 @media (max-width: 320px) {
+
+.card-container2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 0.5rem; 
+    margin-top: 2%;
+    max-width: 90%; 
+    margin-left: 30px; 
+}
+
     #mainImage {
         display: none;
     }
