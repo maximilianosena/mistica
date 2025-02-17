@@ -10,7 +10,7 @@ let chakra7 = document.getElementById("chakra7")
 
 chakra1.addEventListener("click",()=>{
     localStorage.setItem("chakras", [11])
-    localStorage.setItem("imagen", "/imgs/corona.webp")
+    localStorage.setItem("imagen", "/mistica/imgs/corona.webp")
     localStorage.setItem("nombre_Chakra", JSON.stringify("Chakra Corona (Sahasrara)"))
     localStorage.setItem("frase_Chakra", JSON.stringify("Yo soy"))
  location.href="jabones_chakras.html"
