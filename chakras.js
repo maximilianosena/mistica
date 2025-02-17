@@ -13,7 +13,7 @@ chakra1.addEventListener("click",()=>{
     localStorage.setItem("imagen", "/imgs/corona.webp")
     localStorage.setItem("nombre_Chakra", JSON.stringify("Chakra Corona (Sahasrara)"))
     localStorage.setItem("frase_Chakra", JSON.stringify("Yo soy"))
- location.href="categorias.html"
+ location.href="jabones_chakras.html"
 })
 
 chakra2.addEventListener("click",()=>{
@@ -21,6 +21,7 @@ chakra2.addEventListener("click",()=>{
     localStorage.setItem("imagen", "/imgs/tercer.png")
     localStorage.setItem("nombre_Chakra", JSON.stringify("Chakra Tercer Ojo (Ajna)"))
     localStorage.setItem("frase_Chakra", JSON.stringify("Yo comprendo"))
+location.href="jabones_chakras.html"
 })
 
 chakra3.addEventListener("click",()=>{
@@ -28,6 +29,7 @@ chakra3.addEventListener("click",()=>{
     localStorage.setItem("imagen", "/imgs/garganta.png")
     localStorage.setItem("nombre_Chakra", JSON.stringify("Chakra Garganta (Vishuddha)"))
     localStorage.setItem("frase_Chakra", JSON.stringify("Yo hablo"))
+location.href="jabones_chakras.html"
 })
 
 chakra4.addEventListener("click",()=>{
@@ -35,6 +37,7 @@ chakra4.addEventListener("click",()=>{
     localStorage.setItem("imagen", "/imgs/corazon.png")
     localStorage.setItem("nombre_Chakra", JSON.stringify("Chakra Corazón (Anahata)"))
     localStorage.setItem("frase_Chakra", JSON.stringify("Yo amo"))
+location.href="jabones_chakras.html"
 })
 
 chakra5.addEventListener("click",()=>{
@@ -42,6 +45,7 @@ chakra5.addEventListener("click",()=>{
     localStorage.setItem("imagen", "/imgs/plexo.png")
     localStorage.setItem("nombre_Chakra", JSON.stringify("Chakra Plexo Solar (Manipura)"))
     localStorage.setItem("frase_Chakra", JSON.stringify("Yo puedo"))
+location.href="jabones_chakras.html"
 })
 
 chakra6.addEventListener("click",()=>{
@@ -49,6 +53,7 @@ chakra6.addEventListener("click",()=>{
     localStorage.setItem("imagen", "/imgs/sacro.png")
     localStorage.setItem("nombre_Chakra", JSON.stringify("Chakra Sacro (Svadhisthana)"))
     localStorage.setItem("frase_Chakra", JSON.stringify("Yo deseo"))
+location.href="jabones_chakras.html"
 })
 
 chakra7.addEventListener("click",()=>{
@@ -56,5 +61,6 @@ chakra7.addEventListener("click",()=>{
     localStorage.setItem("imagen", "/imgs/raiz.png")
     localStorage.setItem("nombre_Chakra", JSON.stringify("Chakra Raíz (Muladhara)"))
     localStorage.setItem("frase_Chakra", JSON.stringify("Yo tengo"))
+location.href="jabones_chakras.html"
 })
 })
