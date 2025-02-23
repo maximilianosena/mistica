@@ -11,9 +11,8 @@ let url1 = "https://mistica-back.vercel.app/categorias"
               // Crear la card
               let cardHTML = `
                 <div class="card" style="width: 18rem;">
-                    <img src="${proposito.img}" class="card-img-top" alt="Imagen de ${proposito.titulo}">
                     <div class="card-body">
-                        <h5 class="card-title">${proposito.titulo}</h5>
+                        <h5 class="card-title">${proposito.titulo} </br></br> Linea: ${proposito.linea}</h5>
                         <p class="card-text">${proposito.ingredientes.join(', ')}</p>
                     </div>
                     <ul class="list-group list-group-flush" id="listaJabones${index}"></ul>

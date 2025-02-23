@@ -46,17 +46,30 @@ function jsonCart() {
     containerProducto.innerHTML+=    `
                 <div class="card" style="width: 40rem;">
                     <img src="${info.img}" class="card-img-top" alt="Imagen de ${info.nombre}">
-                    <div class="card-body">
-                        <h5 class="card-title">${info.nombre}</h5>
+                    <div class="card-body" id=${info.id} >
+                        <h5 class="card-title">${info.nombre} 
+                        </br>
+                        </br>
+                        Linea: ${info.linea} 
+                        <hr>
+                        </h5>
+                     <h6>${info.gramos}</h6>
                         <p class="card-text">${info.ingredientes.join(', ')}</p>
-                        <p class="card-text">Propósito energético: ${info.prop_ener}</p>
-                        <p class="card-text">Beneficios para la piel: ${info.beneficios}</p>
-                    </div>
-                    </div>
+                    
                     `
-    
+                    let container_Body = document.getElementById(info.id)
+
+                    if(info.prop_ener){
+                        container_Body.innerHTML+= `<p class="card-text"> Propósito energético: ${info.prop_ener}</p>
+                       <p class="card-text">Beneficios para la piel: ${info.beneficios}</p>
+                     `
+
+                     containerProducto.innerHTML += `</div>`;
+                     containerProducto.innerHTML += `</div>`;
+
                     containerBoton.innerHTML += `<button class="btn btn-warning mt-0" id=${info.id}>Me interesa</button>`
 
+                  }
 
   let btn_add = document.getElementById(info.id)
 

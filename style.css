@@ -212,6 +212,9 @@ a {
     margin-left: 30px; 
 }
 
+.card-text{
+    padding: 0;
+}
 .card-container2 {
     display: grid;
     gap: 0.5rem; 
