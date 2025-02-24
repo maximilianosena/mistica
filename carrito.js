@@ -135,40 +135,7 @@ function products_add() {
   }
 }
 
-  function jbChicos(jbChico) {
-  let totalArticulos = 0;
-
-  // Contamos la cantidad total de artículos (incluyendo el `count` de cada uno)
-  for (let i = 0; i < jbChico.length; i++) {
-     totalArticulos += jbChico[i].count;
-  }
-
-  console.log(totalArticulos)
-  let pares = Math.floor(totalArticulos / 2); // Cuántos pares de artículos
-  console.log(pares)
-  let impares = totalArticulos % 2; // Si queda un artículo extra
-  console.log(impares)
-  totalChicos= (pares * 150) + (impares * 90); // Sumar precio de pares y sobrante
-
-  console.log(totalChicos)
-
-  for (let i = 0; i < jbChico.length; i++) {
-    let product = jbChico.articles[i];
-  let subtotal = product.unitCost * product.count;
   
-      // Agrega el atributo data-index para identificar la fila
-      tableBody3.innerHTML += `<tr data-index="${i}"> 
-        <td><img src=${product.image} width="50px" ></td>
-        <td>${product.name}</td>
-        <td>$ ${product.unitCost}</td>
-        <td><input class="prodCount" type="number" value=${product.count} min="1" style="width:70px"></td>
-        <td><b>$ <span class="subtotal">${subtotal}</span></b></td>
-        <td><button type="button" class="btn btn-danger" onclick="removeProductCart(${product.id})">X </button></td>
-        </tr>`;
-    } 
-  
-   
-  }
 
 
 
@@ -190,8 +157,6 @@ function products_add() {
     }
   }
   
-
-  jbChicos(jbChico)
   console.log(localStorage.getItem("personalizado"));
 
   function removeProductCart(id) {
