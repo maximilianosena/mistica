@@ -1,10 +1,11 @@
 let tableBody = document.getElementById("tableBody");
 let tableBody2 = document.getElementById("tableBody2");
+let tableBody3 = document.getElementById("tableBody3");
 let totalElement = document.getElementById("total");
 let list = [];
 let subtotalPersonalizado = 0
-
-console.log("lista", list)
+let jbChico = []
+let totalChicos = 0;
 let jbPersonalizado = JSON.parse(localStorage.getItem("personalizado"))
 let resultadoSubtotal;
 /////////////////////////////////////////////////////////////
@@ -25,6 +26,20 @@ function products_add() {
         list.push(product);
       }
     });
+  
+    
+    console.log("lista", list)
+
+    for (let i = 0; i < list.length; i ++) {
+      for (let x = 0; x < list[i].articles.length; x ++){
+      console.log(list[i].articles[x])
+      if (list[i].articles[x].linea==="Aura"){
+        jbChico.push(list[i].articles[x])
+      }
+    }
+  }
+    console.log("chicos", jbChico)
+  
     localStorage.setItem("cart", JSON.stringify(list));
     for (let product of list) {
       showTheProduct(product);
@@ -43,7 +58,6 @@ function products_add() {
     
       console.log(jbPersonalizado)
       showTheProduct(object);
-      
       subTotals(); //agrego función al fetch para ver al cargar la página
     } else {
       console.log("Error: " + response.status);
@@ -58,6 +72,7 @@ function products_add() {
     for (let i = 0; i < object.articles.length; i++) {
       let product = object.articles[i];
   
+      if (product.linea!=="Aura"){
       // Calcula el subtotal en función de la cantidad
       let subtotal = product.unitCost * product.count;
   
@@ -70,8 +85,9 @@ function products_add() {
         <td><b>$ <span class="subtotal">${subtotal}</span></b></td>
         <td><button type="button" class="btn btn-danger" onclick="removeProductCart(${product.id})">X </button></td>
         </tr>`;
-    }
+    } 
   
+   
     // Agrega un evento de cambio a los campos de cantidad
     let prodCountInputs = document.querySelectorAll(".prodCount");
   
@@ -117,6 +133,44 @@ function products_add() {
       });
     });
   }
+}
+
+  function jbChicos(jbChico) {
+  let totalArticulos = 0;
+
+  // Contamos la cantidad total de artículos (incluyendo el `count` de cada uno)
+  for (let i = 0; i < jbChico.length; i++) {
+     totalArticulos += jbChico[i].count;
+  }
+
+  console.log(totalArticulos)
+  let pares = Math.floor(totalArticulos / 2); // Cuántos pares de artículos
+  console.log(pares)
+  let impares = totalArticulos % 2; // Si queda un artículo extra
+  console.log(impares)
+  totalChicos= (pares * 150) + (impares * 90); // Sumar precio de pares y sobrante
+
+  console.log(totalChicos)
+
+  for (let i = 0; i < jbChico.length; i++) {
+    let product = jbChico.articles[i];
+  let subtotal = product.unitCost * product.count;
+  
+      // Agrega el atributo data-index para identificar la fila
+      tableBody3.innerHTML += `<tr data-index="${i}"> 
+        <td><img src=${product.image} width="50px" ></td>
+        <td>${product.name}</td>
+        <td>$ ${product.unitCost}</td>
+        <td><input class="prodCount" type="number" value=${product.count} min="1" style="width:70px"></td>
+        <td><b>$ <span class="subtotal">${subtotal}</span></b></td>
+        <td><button type="button" class="btn btn-danger" onclick="removeProductCart(${product.id})">X </button></td>
+        </tr>`;
+    } 
+  
+   
+  }
+
+
 
   function jbPersonalizados(array) {
     for (let i = 0; i < array.length; i++) {
@@ -136,6 +190,8 @@ function products_add() {
     }
   }
   
+
+  jbChicos(jbChico)
   console.log(localStorage.getItem("personalizado"));
 
   function removeProductCart(id) {
@@ -175,7 +231,6 @@ function subTotals() {
         resultado += parseFloat(allSubtotal[i].childNodes[1].textContent)
       }
     }
-
  
     final(resultado)
 }
@@ -186,9 +241,9 @@ let totalFinal = document.getElementById("totalCart")
 
 function final(subtotalCart, subtotalPersonalizado) {
   let result = 0
-  subtotalCart = isNaN(parseFloat(subtotalCart)) ? 0 : parseFloat(subtotalCart);
+  subtotalCart = isNaN(parseFloat(subtotalCart)) ? 0 : parseFloat(subtotalCart) ;
   subtotalPersonalizado = isNaN(parseFloat(subtotalPersonalizado)) ? 0 : parseFloat(subtotalPersonalizado);
-  result = subtotalCart + subtotalPersonalizado;
+  result = subtotalCart + subtotalPersonalizado ;
   totalFinal.textContent = ` $ ${Number.parseFloat(result)}`
   console.log(result)
   localStorage.setItem("totalPagar", result)
@@ -210,7 +265,7 @@ if (cart === null && jbPersonalizado===0 ) {
     tableBody.innerHTML = '';
     totalFinal.textContent = `$ 0`;
   } else if ( parseFloat(subtotalPersonalizado)!==0 && cart === null){
-    final(0, parseFloat(subtotalPersonalizado))
+    final(0, parseFloat(subtotalPersonalizado), parseFloat(totalChicos))
   }
   else {
     products_add()

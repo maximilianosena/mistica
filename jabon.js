@@ -14,8 +14,9 @@ function addProduct(cart_product) {
             {
                 "id": cart_product.id,
                 "name": cart_product.nombre,
+                "linea": cart_product.linea,
                 "count": 1,
-                "unitCost": 120,
+                "unitCost": cart_product.unitCost,
                 "image": cart_product.img
             }
         ]
@@ -62,16 +63,16 @@ function jsonCart() {
                     if(info.prop_ener){
                         container_Body.innerHTML+= `<p class="card-text"> Propósito energético: ${info.prop_ener}</p>
                        <p class="card-text">Beneficios para la piel: ${info.beneficios}</p>
-                     `
+                     `}
 
                      containerProducto.innerHTML += `</div>`;
                      containerProducto.innerHTML += `</div>`;
 
-                    containerBoton.innerHTML += `<button class="btn btn-warning mt-0" id=${info.id}>Me interesa</button>`
+                    containerBoton.innerHTML += `<button class="btn btn-warning mt-0" id=${info.id}button>Me interesa</button>`
+                  
+                  
 
-                  }
-
-  let btn_add = document.getElementById(info.id)
+  let btn_add = document.getElementById(info.id+"button")
 
   btn_add.addEventListener("click", () => {
     btn_add.disabled = true; // Desactivar el botón
