@@ -5,7 +5,7 @@ let totalElement = document.getElementById("total");
 let list = [];
 let subtotalPersonalizado = 0
 let jbChico = []
-let totalChicos = 0;
+let subtotalChicos = 0;
 let jbPersonalizado = JSON.parse(localStorage.getItem("personalizado"))
 let resultadoSubtotal;
 /////////////////////////////////////////////////////////////
@@ -13,6 +13,9 @@ let cart = JSON.parse(localStorage.getItem("cart"))
 
 console.log(jbPersonalizado)
 jbPersonalizado===null?console.log("personalizados vacio"):jbPersonalizados(jbPersonalizado)
+
+console.log(jbChico)
+
 
 function products_add() {
     list = []
@@ -64,8 +67,49 @@ function products_add() {
     }
   }
   
-  
-  
+  let divDescuento = document.getElementById("descuento")
+
+  function jabonesChicos(array) {
+
+      let totalArticulos= 0;
+      tableBody3.innerHTML = ""
+    for (let i = 0; i < array.length; i++) {
+
+      console.log(array[i])
+
+      tableBody3.innerHTML += `<tr data-index="${i}"> 
+        <td><img src=${array[i].image} width="50px" ></td>
+        <td>${array[i].name}</td>
+        <td>$ ${array[i].unitCost}</td>
+        <td><input class="prodCount" type="number" value=${array[i].count} min="1" style="width:70px"></td>
+        <td><b class="subtotalChicos">$ <span class="subtotal">${array[i].count*90}</span></b></td>
+        <td><button type="button" class="btn btn-danger" onclick="removeProductCart(${array[i].id})">X </button></td>
+        </tr>`;
+    }
+
+    for (let i = 0; i<array.length; i++){
+      totalArticulos += array[i].count
+    }
+
+    if (totalArticulos===1){
+      divDescuento.innerHTML=""
+      subtotalChicos = 90
+    }
+    else if (totalArticulos===2){
+      subtotalChicos =150
+      divDescuento.innerHTML=""
+      divDescuento.innerHTML =`Se realiza un descuento de $30 en el total de la compra`
+    } else {
+      let pares = Math.floor(totalArticulos/2)
+      let impares = totalArticulos % 2;
+      subtotalChicos = pares * 150 + impares * 90
+      divDescuento.innerHTML=""
+      divDescuento.innerHTML =`Se realiza un descuento de $ ${30*pares} en el total de la compra`
+    }
+
+    console.log(subtotalChicos)
+  }
+
   function showTheProduct(object) {
     tableBody.innerHTML += '';
   
@@ -85,6 +129,13 @@ function products_add() {
         <td><b>$ <span class="subtotal">${subtotal}</span></b></td>
         <td><button type="button" class="btn btn-danger" onclick="removeProductCart(${product.id})">X </button></td>
         </tr>`;
+
+        if (jbChico === undefined || jbChico === null || !Array.isArray(jbChico) || jbChico.length === 0) {
+          console.log("chicos vacio");
+        } else {
+          console.log("chicos con contenido", jbChico);
+          jabonesChicos(jbChico);
+        }
     } 
   
    
@@ -193,10 +244,12 @@ function subTotals() {
   }
   else {
     for (let i = 0; i < allSubtotal.length; i++) {
+      if (allSubtotal[i].classList.value!="subtotalChicos"){
         resultado += parseFloat(allSubtotal[i].childNodes[1].textContent)
       }
     }
- 
+    }
+    resultado+=subtotalChicos
     final(resultado)
 }
 
@@ -207,8 +260,8 @@ let totalFinal = document.getElementById("totalCart")
 function final(subtotalCart, subtotalPersonalizado) {
   let result = 0
   subtotalCart = isNaN(parseFloat(subtotalCart)) ? 0 : parseFloat(subtotalCart) ;
-  subtotalPersonalizado = isNaN(parseFloat(subtotalPersonalizado)) ? 0 : parseFloat(subtotalPersonalizado);
-  result = subtotalCart + subtotalPersonalizado ;
+  subtotalPersonalizado = isNaN(parseFloat(subtotalPersonalizado)) ? 0 : parseFloat(subtotalPersonalizado);  
+  result = subtotalCart + subtotalPersonalizado
   totalFinal.textContent = ` $ ${Number.parseFloat(result)}`
   console.log(result)
   localStorage.setItem("totalPagar", result)
